@@ -1,9 +1,7 @@
-<html>
-    <head>
-        <title>Hello
-        </title>
-    </head>
-    <body>
-        Hello ji
-    </body>
-</html>
+{% extends 'main.html' %}
+
+{% block title %} welcome to Online Testing System {% endblock title%}
+{% block top %}
+<a href="{% url 'OTS:registrationForm' %}">Signup</a>
+<a href="{% url 'OTS:login'%}">Login</a>
+{% endblock%}

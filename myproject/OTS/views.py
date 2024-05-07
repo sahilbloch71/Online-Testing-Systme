@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.template import loader
 from django.http import HttpResponse,HttpResponseRedirect
 from OTS.models import *
 
 def welcome(request):
-    pass
+    template=loader.get_template('welcome.html')
+    return HttpResponse(template.render)
 def candidateRegistrationForm(request):
     pass
 def candidateRegistration(request):
