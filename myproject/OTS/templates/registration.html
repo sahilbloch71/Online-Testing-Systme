@@ -11,12 +11,12 @@
         Sorry, username already exists, please try different username.
         <a href="{% url 'OTS:registrationForm' %}">Back to Candidate</a>
     </div>
-{% elif userStstus == 2 %}
+{% elif userStatus == 2 %}
     <div class="userStatus">
         Congratulation , User Created Successfully
         <a href="{% url 'OTS:login' %}">Login</a>
     </div>
-{% elif userStstus == 3 %}
+{% elif userStatus == 3 %}
     <div class="userStatus">
         Oops!!, Improper Request 
         <a href="{% url 'OTS:registrationForm' %}">Back to Candidate</a>
