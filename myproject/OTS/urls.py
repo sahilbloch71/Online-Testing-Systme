@@ -4,7 +4,7 @@ app_name='OTS'
 urlpatterns = [
     path('',welcome ),
     path('new-candidate',candidateRegistrationForm,name='registrationForm'),
-    path('store-candidate',candidateRegistration),
+    path('store-candidate',candidateRegistration,name='storecandidate'),
     path('login',loginView,name='login'),
     path('home',candidateHome),
     path('test-paper',testPaper),

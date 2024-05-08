@@ -1,4 +1,4 @@
-<!-- {% extends 'main.hmtl'}
+{% extends 'main.html' %}
 
 {% block title%} OTS-RegistrationForm {%endblock title%}
 {% block top %}
@@ -6,7 +6,7 @@
 {%endblock%}
 {% block content%}
 <div class="all-forms">
-    <form action="{% url 'OTS:storeCandidate' %}" method="post">
+    <form action="{% url 'OTS:storecandidate' %}" method="post">
         {% csrf_token %}
         <label for="username">username</label>
         <input type="text" name="username">
@@ -21,4 +21,4 @@
     </form>
     Already have am account, <a href="{% url 'OTS:login' %}">Click Here</a>
 </div>
-{% endblock %} -->
+{% endblock %}

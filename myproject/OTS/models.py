@@ -4,8 +4,8 @@ class Candidate(models.Model):
     username=models.CharField(primary_key=True,max_length=20)
     password=models.CharField(null=False,max_length=20)
     name=models.CharField(null=False,max_length=30)
-    test_attempted=models.IntegerField()
-    points=models.FloatField()
+    test_attempted=models.IntegerField(default=0)
+    points=models.FloatField(default=0.0)
 class Question(models.Model):
     qid=models.BigAutoField(primary_key=True, auto_created=True)
     que=models.TextField()
