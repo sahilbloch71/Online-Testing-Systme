@@ -7,6 +7,9 @@
 {% endblock%}
 {% block content %}
 <div class="all-forms">
+    {% if loginError %}
+        <div id="error">{{loginError}}</div>
+    {% endif %}
     <form action="{% url 'OTS:login' %}" method="POST">
         {% csrf_token %}
         <div class="form-unit">
@@ -14,6 +17,15 @@
             <input type="text" name="username">
         </div>
 
+        <div class="form-unit">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+        </div>
+        <div class="form-unit">
+            <input type="submit" value="Login">
+            <input type="reset" value="Clear">
+        </div>
     </form>
+    New user <a href="{% url 'OTS:registrationForm' %}">Click Here</a>
 </div>
 {% endblock %}
