@@ -1,3 +1,4 @@
+from unittest import result
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse,HttpResponseRedirect
@@ -95,15 +96,31 @@ def calculateTestResult(requeat):
     result.points=points
     result.save()
     #update candidate table
-    candidate=Candidate.objects.get(usrname=requeat.session['username'])
+    candidate=Candidate.objects.get(username=requeat.session['username'])
     candidate.test_attempted+=1
     candidate.points=(candidate.points*(candidate.test_attempted-1)+points)/candidate.test_attempted
     candidate.save()
     return HttpResponseRedirect('result')
+
 def testResultHistory(request):
-    pass
+    if 'name' not in request.session.keys():
+        res=HttpResponseRedirect("login")
+    
+    candidate=Candidate.objects.filter(username=request.session['username'])
+    results=Result.objects.filter(username_id=candidate[0].username)
+    context={'candidate':candidate[0],'results':results}
+    res=render(request,'candidate_history.html',context)
+    return res
+    
 def showTextResult(request):
-    pass
+    if 'name' not in request.session.keys():
+        res=HttpResponseRedirect("login")
+    #fetch latest result from result table 
+    result = Result.objects.filter(resultid=Result.objects.latest('resultid').resultid,username_id=request.session['username'])
+    context={'result':result}
+    res=render(request,'show_result.html',context)
+    return res
+
 def logoutView(request):
     if 'name' in request.session.keys():
         del request.session['username']
