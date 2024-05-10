@@ -31,7 +31,8 @@ def candidateRegistration(request):
     return res
 
 def loginView(request):
-    pass
+    res=render(request,'login.html')
+    return res
 def candidateHome(request):
     pass
 def testPaper(request):
